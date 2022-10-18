@@ -1,0 +1,38 @@
+.topArea {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.menuList {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  ul {
+    list-style: none;
+  }
+}
+
+.linkArea {
+  display: flex;
+  justify-content: flex-end;
+
+  .search {
+    margin-right: 30px;
+    border-bottom: 2px solid black;
+    right: 100px;
+    input {
+      border: none;
+      margin: 5px;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+  button {
+    margin-right: 50px;
+    border: none;
+    border-radius: 5px;
+    background: peachpuff;
+  }
+}
