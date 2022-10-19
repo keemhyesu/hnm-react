@@ -9,7 +9,7 @@ const Main = () => {
   const [query, setQuery] = useSearchParams();
   const getProductList = async () => {
     let searchQuery = query.get("q") || "";
-    let url = `http://localhost:5000/products/?q=${searchQuery}`;
+    let url = `https://my-json-server.typicode.com/keemhyesu/zara-react/products/?q=${searchQuery}`;
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
