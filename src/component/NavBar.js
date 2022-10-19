@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../component/NavBar.scss";
 import { AiOutlineSearch } from "react-icons/ai";
-import { BsPerson } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ auth, setAuth }) => {
+  const [clear, setClear] = useState("");
+
   const menuList = [
     "STUDIO COLLECTION",
     "WOMAN",
@@ -23,6 +24,13 @@ const NavBar = ({ auth, setAuth }) => {
     navigate("/");
   };
 
+  const search = (e) => {
+    if (e.key === "Enter") {
+      let keyword = e.target.value;
+      navigate(`/?q=${keyword}`);
+    }
+  };
+
   return (
     <>
       <div className="topArea">
@@ -35,7 +43,7 @@ const NavBar = ({ auth, setAuth }) => {
       </div>
       <div className="linkArea">
         <div className="search">
-          <input type="text" />
+          <input type="text" onKeyPress={(e) => search(e)} />
           <AiOutlineSearch size={20} />
         </div>
         {auth ? (
