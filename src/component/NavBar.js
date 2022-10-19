@@ -2,6 +2,8 @@ import React from "react";
 import "../component/NavBar.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+
 const NavBar = () => {
   const menuList = [
     "STUDIO COLLECTION",
@@ -11,10 +13,21 @@ const NavBar = () => {
     "BEAUTY",
     "ZARA ORIGINS",
   ];
+  const navigate = useNavigate();
+
+  const goToLogin = () => {
+    navigate("/login");
+  };
+
+  const goToMain = () => {
+    navigate("/");
+  };
+
   return (
     <>
       <div className="topArea">
         <img
+          onClick={goToMain}
           width={400}
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/1000px-Zara_Logo.svg.png"
           alt=""
@@ -25,7 +38,7 @@ const NavBar = () => {
           <input type="text" />
           <AiOutlineSearch size={20} />
         </div>
-        <button>
+        <button onClick={goToLogin}>
           <BsPerson size={20} /> 로그인
         </button>
       </div>

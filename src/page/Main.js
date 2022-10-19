@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {
   const [productList, setProductList] = useState([]);
+
   const getProductList = async () => {
     let url = `http://localhost:5000/products/`;
     let response = await fetch(url);
@@ -21,7 +22,7 @@ const Main = () => {
     <Container>
       <Row>
         {productList.map((item, i) => (
-          <Col lg={3} width={100}>
+          <Col lg={3} width={100} key={i}>
             <ProductImage item={item} />
           </Col>
         ))}
