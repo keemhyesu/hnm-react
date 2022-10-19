@@ -1,0 +1,16 @@
+.card {
+  margin-top: 50px;
+  transition: 0.3s ease-in-out; /* 확대 시 부드럽게 */
+  --bs-card-border-width: none;
+  --bs-border-color-translucent: none;
+}
+
+.card img {
+  display: block;
+  --bs-card-border-width: none;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  --bs-border-color-translucent: none;
+}
