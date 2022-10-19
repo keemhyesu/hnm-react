@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {}, [auth]);
   return (
     <div>
-      <NavBar />
+      <NavBar auth={auth} setAuth={setAuth} />
       <Routes>
         <Route path="/" element={<Main />}></Route>
         <Route path="/login" element={<Login setAuth={setAuth} />}></Route>

@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ auth, setAuth }) => {
   const menuList = [
     "STUDIO COLLECTION",
     "WOMAN",
@@ -38,9 +38,11 @@ const NavBar = () => {
           <input type="text" />
           <AiOutlineSearch size={20} />
         </div>
-        <button onClick={goToLogin}>
-          <BsPerson size={20} /> 로그인
-        </button>
+        {auth ? (
+          <button onClick={() => setAuth(false)}>로그아웃</button>
+        ) : (
+          <button onClick={goToLogin}>로그인</button>
+        )}
       </div>
       <div className="menuList">
         {menuList.map((item, i) => (

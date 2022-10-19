@@ -1,17 +1,43 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import "../page/ProductDetail.scss";
+import { useParams } from "react-router-dom";
+import { Container, Row, Col, DropdownButton, Dropdown } from "react-bootstrap";
 const ProductDetail = () => {
+  let { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const getProductDetail = async () => {
+    let url = `http://localhost:5000/products/${id}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log(data);
+    setProduct(data);
+  };
+
+  useEffect(() => {
+    getProductDetail();
+  }, []);
+
   return (
-    <div className="detailCard">
-      <img
-        src="https://static.zara.net/photos///2022/I/0/1/p/7385…400/2/w/563/7385186400_1_1_1.jpg?ts=1665749414110"
-        alt=""
-      />
-      <div>상품명</div>
-      <div>가격</div>
-      <div>엠디초이스</div>
-      <div>신상품여부</div>
-    </div>
+    <Container style={{ height: "700px" }}>
+      <Row>
+        <Col className="productDetailImg">
+          <img src={product?.img} alt="" />
+        </Col>
+        <Col className="detailInfo">
+          <h2>{product?.title}</h2>
+          <h4>{product?.price}원</h4>
+          <div>
+            <b>{product?.choice == true ? "MD CHOICE" : ""}</b>
+          </div>
+          <div>{product?.new == true ? "NEW" : ""}</div>
+          <DropdownButton id="dropdown-basic-button" title="사이즈 선택">
+            <Dropdown.Item href="#/action-1">S</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">M</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">L</Dropdown.Item>
+          </DropdownButton>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
